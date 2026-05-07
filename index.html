@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - ริกิ การะเกษ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #f8fafc;
+        }
+        .nav-link.active {
+            border-bottom: 2px solid #1e3a8a;
+            color: #1e3a8a;
+        }
+        .section-content {
+            display: none;
+        }
+        .section-content.active {
+            display: block;
+        }
+        .navy-blue { background-color: #1e3a8a; }
+        .navy-text { color: #1e3a8a; }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-xl font-bold navy-text">My PORTFOLIO</div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="showSection('home')" class="nav-link active px-2 py-1 text-gray-600 hover:text-blue-900 transition" id="link-home">หน้าแรก</button>
+                    <button onclick="showSection('about')" class="nav-link px-2 py-1 text-gray-600 hover:text-blue-900 transition" id="link-about">เกี่ยวกับฉัน</button>
+                    <button onclick="showSection('projects')" class="nav-link px-2 py-1 text-gray-600 hover:text-blue-900 transition" id="link-projects">ผลงานและกิจกรรม</button>
+                    <button onclick="showSection('certificates')" class="nav-link px-2 py-1 text-gray-600 hover:text-blue-900 transition" id="link-certificates">เกียรติบัตร</button>
+                    <button onclick="showSection('contact')" class="nav-link px-2 py-1 text-gray-600 hover:text-blue-900 transition" id="link-contact">การติดต่อ</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Items -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-4 py-2 space-y-2">
+            <button onclick="showSection('home')" class="block w-full text-left py-2 text-gray-600">หน้าแรก</button>
+            <button onclick="showSection('about')" class="block w-full text-left py-2 text-gray-600">เกี่ยวกับฉัน</button>
+            <button onclick="showSection('projects')" class="block w-full text-left py-2 text-gray-600">ผลงานและกิจกรรม</button>
+            <button onclick="showSection('certificates')" class="block w-full text-left py-2 text-gray-600">เกียรติบัตร</button>
+            <button onclick="showSection('contact')" class="block w-full text-left py-2 text-gray-600">การติดต่อ</button>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+        
+        <!-- Section: Home -->
+        <section id="home" class="section-content active animate-fade-in">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3">
+                    <div class="rounded-2xl overflow-hidden border-8 border-white shadow-2xl w-64 h-80 mx-auto">
+                        <!-- แนะนำให้ใส่รูปชุดนักศึกษาหรือชุดสุภาพหน้าตรง -->
+                        <img src="24203a83-7390-4e38-a5bd-c22375297d60.jpg" alt="ริกิ การะเกษ" id="profile-img" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-2/3 text-center md:text-left">
+                    <div class="inline-block bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-bold mb-4">
+                    </div>
+                    <h1 class="text-5xl font-bold navy-text mb-4">ริกิ การะเกษ</h1>
+                    <p class="text-2xl text-gray-600 mb-6 font-light">"เชี่ยวชาญฮาร์ดแวร์ มุ่งมั่นงานซอฟต์แวร์ พร้อมเรียนรู้และพัฒนาอย่างมืออาชีพ"</p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                        <div class="flex items-center gap-2 text-gray-700">
+                            <i class="fas fa-check-circle text-green-500"></i> ประกอบคอมพิวเตอร์
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-700">
+                            <i class="fas fa-check-circle text-green-500"></i> ตัดต่อวิดีโอ/กราฟิก
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-700">
+                            <i class="fas fa-check-circle text-green-500"></i> พัฒนาเว็บไซต์
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <button onclick="showSection('contact')" class="navy-blue text-white px-8 py-3 rounded-lg hover:bg-blue-800 transition shadow-lg flex items-center gap-2">
+                            <i class="fas fa-paper-plane"></i> ติดต่อสอบถาม
+                        </button>
+                        <button onclick="showSection('projects')" class="border-2 border-blue-900 text-blue-900 px-8 py-3 rounded-lg hover:bg-blue-50 transition font-bold">
+                            ดูผลงานล่าสุด
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: About -->
+        <section id="about" class="section-content animate-fade-in">
+            <h2 class="text-3xl font-bold navy-text mb-8 border-b-2 border-blue-900 pb-2">เกี่ยวกับฉัน</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm border">
+                        <h3 class="text-xl font-bold mb-4 navy-text"><i class="fas fa-user-graduate mr-2"></i>ประวัติการศึกษา</h3>
+                        <ul class="space-y-4">
+                            <li class="border-l-4 border-blue-900 pl-4">
+                                <p class="font-bold text-gray-800">ประกาศนียบัตรวิชาชีพ (ปวช.) ปีที่ 3</p>
+                                <p class="text-gray-600">สาขางานเทคโนโลยีคอมพิวเตอร์</p>
+                                <p class="text-gray-600">วิทยาลัยเทคนิคอุบลราชธานี</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm border">
+                        <h3 class="text-xl font-bold mb-4 navy-text"><i class="fas fa-id-card mr-2"></i>ข้อมูลส่วนตัวเพิ่มเติม</h3>
+                        <div class="space-y-2 text-gray-700">
+                            <p><strong>ประวัติส่วนตัว:</strong> สวัสดีครับ ผมชื่อ ริกิ การะเกษ ปัจจุบันกำลังศึกษาอยู่ชั้นปีที่ 3 สาขาเทคนิคคอมพิวเตอร์ วิทยาลัยเทคนิคอุบลราชธานี
+
+ผมมีความสนใจและเชี่ยวชาญด้านการออกแบบ UI/UX Design โดยเน้นการสร้างเว็บไซต์ที่ใช้งานง่าย และมีความสวยงามแบบ Pixel Art นอกจากนี้ผมยังมีทักษะด้านการเขียนโปรแกรมควบคุมไมโครคอนโทรลเลอร์ Arduino และการจัดการระบบเครือข่าย</p>
+                            <p><strong>สถานะทางทหาร:</strong> ผ่านการตรวจเลือกทหารกองเกิน (สด.43) เรียบร้อยแล้ว</p>
+                            <p><strong>ที่อยู่:</strong> 21/2 หมู่ที่ 18 ต.ขามใหญ่ อ.เมืองอุบลราชธานี จ.อุบลราชธานี</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border h-full">
+                    <h3 class="text-xl font-bold mb-6 navy-text"><i class="fas fa-star mr-2"></i>ทักษะและความสามารถทางเทคนิค</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-sm font-bold text-gray-600 mb-2">คอมพิวเตอร์ฮาร์ดแวร์ (Hardware)</p>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-900 h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                            <p class="text-xs text-right mt-1">เชี่ยวชาญการประกอบและวิเคราะห์อาการเสีย</p>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-gray-600 mb-2">งานตัดต่อและมัลติมีเดีย (Video Editing)</p>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-900 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                            <p class="text-xs text-right mt-1">Premiere Pro, Photoshop, Canva</p>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-gray-600 mb-2">การเขียนโปรแกรมและเว็บไซต์ (Coding)</p>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-900 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                            <p class="text-xs text-right mt-1">HTML, CSS, JavaScript, Tailwind CSS</p>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-gray-600 mb-2">ระบบความปลอดภัย (CCTV & Network)</p>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-900 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                            <p class="text-xs text-right mt-1">การติดตั้งและวางระบบเครือข่ายเบื้องต้น</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-sm border mt-8">
+    <h3 class="text-xl font-bold mb-4 navy-text">
+        <i class="fas fa-tools mr-2"></i>ประสบการณ์การฝึกงาน
+    </h3>
+    <div class="space-y-4 text-gray-700">
+        <div>
+            <p class="font-bold text-gray-800">ร้าน E-SIC Computer</p>
+        </div>
+        <ul class="list-disc pl-5 space-y-1">
+            <li>ซ่อมบำรุงและประกอบคอมพิวเตอร์ Desktop และ Laptop</li>
+            <li><strong>ตรวจเช็คและซ่อมบำรุงเครื่องพิมพ์ (Printer)</strong></li>
+            <li>ติดตั้งระบบปฏิบัติการ Windows และโปรแกรมใช้งานต่างๆ</li>
+            <li>วิเคราะห์ปัญหาฮาร์ดแวร์และซอฟต์แวร์ (Troubleshooting)</li>
+        </ul>
+    </div>
+</div>
+        </section>
+
+        <!-- Section: Projects -->
+        <section id="projects" class="section-content animate-fade-in">
+            <h2 class="text-3xl font-bold navy-text mb-8 border-b-2 border-blue-900 pb-2">ผลงานและกิจกรรม</h2>
+            <div id="project-list" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- ผลงาน 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border hover:shadow-xl transition">
+                    <img src="Screenshot 2026-05-07 101131.png" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <span class="text-xs font-bold text-blue-600 uppercase">Project</span>
+                        <h3 class="font-bold text-lg mb-2">CCTV Security Advisor</h3>
+                        <p class="text-sm text-gray-600 mb-4">พัฒนาเว็บแอปพลิเคชันสำหรับให้คำปรึกษาการเลือกซื้อกล้องวงจรปิดตามมาตรฐาน ONVIF เพื่อลดปัญหา Vendor Lock-in</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[10px] bg-gray-100 px-2 py-1 rounded">HTML</span>
+                            <span class="text-[10px] bg-gray-100 px-2 py-1 rounded">Tailwind</span>
+                            <span class="text-[10px] bg-gray-100 px-2 py-1 rounded">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- ผลงาน 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border hover:shadow-xl transition">
+                    <img src="641300466_1527335572733981_5044676974902333973_n.jpg" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <span class="text-xs font-bold text-green-600 uppercase">Maintenance</span>
+                        <h3 class="font-bold text-lg mb-2">Computer System Servicing</h3>
+                        <p class="text-sm text-gray-600 mb-4">บริการประกอบคอมพิวเตอร์และซ่อมบำรุงระบบปฏิบัติการให้กับนักศึกษาและบุคคลทั่วไป โดยเน้นความเสถียรของระบบ</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[10px] bg-gray-100 px-2 py-1 rounded">Hardware</span>
+                            <span class="text-[10px] bg-gray-100 px-2 py-1 rounded">Software Setup</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- ผลงาน 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden border hover:shadow-xl transition">
+                    <img src="after-effects.jpg" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <span class="text-xs font-bold text-purple-600 uppercase">Activities</span>
+                        <h3 class="font-bold text-lg mb-2">Video Editing Content</h3>
+                        <p class="text-sm text-gray-600 mb-4">ผลิตสื่อวิดีโอประชาสัมพันธ์กิจกรรมภายในวิทยาลัย รวมถึงการตัดต่อคลิปสั้นลงสื่อโซเชียลมีเดีย</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[10px] bg-gray-100 px-2 py-1 rounded">Premiere Pro</span>
+                            <span class="text-[10px] bg-gray-100 px-2 py-1 rounded">Storyboarding</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Certificates -->
+        <section id="certificates" class="section-content animate-fade-in">
+            <h2 class="text-3xl font-bold navy-text mb-8 border-b-2 border-blue-900 pb-2">เกียรติบัตร</h2>
+            <div id="certificate-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- เกียรติบัตร 1 -->
+                <div class="group relative overflow-hidden rounded-lg border shadow-sm transition hover:shadow-lg bg-white">
+                    <img src="a.png" alt="รางวัลสัปดาห์วิทยาศาสตร์" class="w-full h-auto transition group-hover:scale-105 cursor-pointer" onclick="openModal(this.src)">
+                    <div class="p-4 text-center">
+                        <p class="text-sm font-bold navy-text">คอมพิวเตอร์กราฟิก | Computer Graphic</p>
+                        <p class="text-xs text-gray-500 mt-1">หน่วยงาน มหาวิทยาลัยราชภัฏนครปฐม</p>
+                    </div>
+                </div>
+                <!-- เกียรติบัตร 2 -->
+                <div class="group relative overflow-hidden rounded-lg border shadow-sm transition hover:shadow-lg bg-white">
+                    <img src="b.png" alt="ทดสอบสมรรถภาพโดดหอ" class="w-full h-auto transition group-hover:scale-105 cursor-pointer" onclick="openModal(this.src)">
+                    <div class="p-4 text-center">
+                        <p class="text-sm font-bold navy-text">โปรแกรมคอมพิวเตอร์สำเร็จรูป | Computer Program</p>
+                        <p class="text-xs text-gray-500 mt-1">หน่วยงาน วิทยาลัยชุมชนสระแก้ว</p>
+                    </div>
+                </div>
+                <!-- เกียรติบัตร 3 -->
+                <div class="group relative overflow-hidden rounded-lg border shadow-sm transition hover:shadow-lg bg-white">
+                    <img src="c.png" alt="แข่งขันทักษะ" class="w-full h-auto transition group-hover:scale-105 cursor-pointer" onclick="openModal(this.src)">
+                    <div class="p-4 text-center">
+                        <p class="text-sm font-bold navy-text">ระบบเครือข่ายคอมพิวเตอร์ขั้นพื้นฐาน | Network Literacy</p>
+                        <p class="text-xs text-gray-500 mt-1">หน่วยงาน มหาวิทยาลัยเชียงใหม่</p>
+                    </div>
+                </div>
+                <!-- เกียรติบัตร 4 -->
+                <div class="group relative overflow-hidden rounded-lg border shadow-sm transition hover:shadow-lg bg-white">
+                    <img src="d.png" alt="ทดสอบสมรรถภาพโดดหอ" class="w-full h-auto transition group-hover:scale-105 cursor-pointer" onclick="openModal(this.src)">
+                    <div class="p-4 text-center">
+                        <p class="text-sm font-bold navy-text">ก้าวสู่การเป็น AI Developer ใน Azure AI | Azure AI: Zero to Hero</p>
+                        <p class="text-xs text-gray-500 mt-1">หน่วยงาน Microsoft Thailand</p>
+                    </div>
+                </div>
+                <!-- เกียรติบัตร 5 -->
+                <div class="group relative overflow-hidden rounded-lg border shadow-sm transition hover:shadow-lg bg-white">
+                    <img src="e.png" alt="ทดสอบสมรรถภาพโดดหอ" class="w-full h-auto transition group-hover:scale-105 cursor-pointer" onclick="openModal(this.src)">
+                    <div class="p-4 text-center">
+                        <p class="text-sm font-bold navy-text">หลักสูตร Microsoft 365 Copilot พร้อมกรณีการใช้งาน | Microsoft 365 Copilot with Use Cases</p>
+                        <p class="text-xs text-gray-500 mt-1">หน่วยงาน Microsoft Thailand</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Contact -->
+        <section id="contact" class="section-content animate-fade-in">
+            <h2 class="text-3xl font-bold navy-text mb-8 border-b-2 border-blue-900 pb-2">การติดต่อ</h2>
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- ข้อมูลติดต่อทางซ้าย -->
+                <div class="md:w-1/3 space-y-4">
+                    <div class="bg-white p-6 rounded-xl border shadow-sm text-center">
+                        <div class="navy-blue w-12 h-12 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <p class="font-bold text-gray-800">เบอร์โทรศัพท์</p>
+                        <p class="text-gray-600">081-470-4304</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border shadow-sm text-center">
+                        <div class="bg-red-600 w-12 h-12 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <p class="font-bold text-gray-800">อีเมล</p>
+                        <p class="text-gray-600">rikikarakey2005@gmail.com</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border shadow-sm text-center">
+                        <div class="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <a href="https://www.facebook.com/riki.karaket.2025" target="_blank" class="block">
+                    <div class="hover:bg-gray-100 p-2 rounded-lg transition-colors">
+                        <p class="font-bold text-gray-800">Facebook</p>
+                        <p class="text-gray-600">ริกิ การะเกษ</p>
+                    </div>
+                </a>
+                    </div>
+                </div>
+                <!-- ฟอร์มติดต่อทางขวา -->
+                <div class="md:w-2/3 bg-white p-8 rounded-xl shadow-lg border">
+                    <h3 class="text-xl font-bold navy-text mb-6">ฝากข้อความถึงผม</h3>
+                    <form id="contactForm" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">ชื่อ-นามสกุล ของคุณ</label>
+                                <input type="text" id="contact_name" class="mt-1 block w-full border rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 outline-none" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">ช่องทางการติดต่อกลับ</label>
+                                <input type="text" id="contact_info" placeholder="อีเมล หรือ เบอร์โทร" class="mt-1 block w-full border rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 outline-none" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">หัวข้อติดต่อ/ข้อความ</label>
+                            <textarea id="contact_msg" rows="5" class="mt-1 block w-full border rounded-md p-3 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="แจ้งเรื่องที่ต้องการติดต่อ..." required></textarea>
+                        </div>
+                        <button type="submit" class="w-full navy-blue text-white py-3 rounded-md hover:bg-blue-800 transition font-bold shadow-md">
+                            <i class="fas fa-paper-plane mr-2"></i> ส่งข้อความทันที
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <!-- 1. เพิ่ม class ที่ body เพื่อให้หน้าเว็บสูงเต็มจอและจัดวางแบบ Flex -->
+<body class="min-h-screen flex flex-col bg-gray-50">
+
+    <!-- 2. ส่วน Navbar (ถ้ามี) -->
+    <nav> ... </nav>
+
+    <!-- 3. ส่วนเนื้อหาหลัก: ใส่ class "flex-grow" เพื่อให้ส่วนนี้ยืดพื้นที่จนดัน Footer ลงไปข้างล่าง -->
+    <main class="flex-grow">
+        <!-- ใส่เนื้อหาหน้าแรกของคุณทั้งหมดที่นี่ -->
+    </main>
+
+    <!-- 4. ส่วน Footer: จากรูป image_67d420.png ให้ลบ mt-12 ออกแล้วใช้ตามนี้ -->
+    <footer class="bg-gray-100 border-t py-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+                <div>
+                    <h4 class="font-bold navy-text text-lg uppercase">ริกิ การะเกษ</h4>
+                    <p class="text-sm text-gray-500">นักศึกษาเทคโนโลยีคอมพิวเตอร์ วิทยาลัยเทคนิคอุบลราชธานี</p>
+                </div>
+                <div class="flex gap-6 text-xl text-gray-600">
+                    <div class="flex gap-6 text-2xl text-gray-600">
+                        <a href="https://www.facebook.com/riki.karaket.2025" target="_blank" rel="noopener noreferrer" 
+                        class="hover:text-blue-600 transition-all duration-300">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+
+                        <a href="https://line.me/ti/p/Th-YUVFs6T" target="_blank" rel="noopener noreferrer" 
+                        class="hover:text-green-500 transition-all duration-300">
+                        <i class="fab fa-line"></i>
+                    </a>
+
+                        <a href="https://github.com/hyongri" target="_blank" rel="noopener noreferrer" 
+                        class="hover:text-black transition-all duration-300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                </div>
+            </div>
+            <hr class="my-6 border-gray-200">
+            <p class="text-center text-xs text-gray-400">© 2026 Digital Portfolio - All Rights Reserved. Create with Purpose.</p>
+        </div>
+    </footer>
+
+</body>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 z-[100] hidden flex items-center justify-center p-4">
+        <span class="absolute top-4 right-8 text-white text-4xl cursor-pointer" onclick="closeModal()">&times;</span>
+        <img id="modalImg" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl">
+    </div>
+
+    <script>
+        // -------------------------------------------------------------
+        // การตั้งค่า GOOGLE SHEETS API (Apps Script)
+        // -------------------------------------------------------------
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz9EX0HXYt70emYvfnAeukXkf5_9gZcZqZBHnk_qdC7ZsPiDx7gHwFvNjjcDjKoij9u0A/exec"; 
+
+        function showSection(id) {
+            document.querySelectorAll('.section-content').forEach(s => {
+                s.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-link').forEach(l => {
+                l.classList.remove('active');
+            });
+            
+            const targetSection = document.getElementById(id);
+            targetSection.classList.add('active');
+            targetSection.classList.add('animate-fade-in');
+            
+            const targetLink = document.getElementById('link-' + id);
+            if(targetLink) targetLink.classList.add('active');
+            
+            document.getElementById('mobile-menu').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        function openModal(src) {
+            document.getElementById('modalImg').src = src;
+            document.getElementById('imageModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('contactForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> กำลังส่ง...";
+            btn.disabled = true;
+
+            const data = {
+                name: document.getElementById('contact_name').value,
+                info: document.getElementById('contact_info').value,
+                message: document.getElementById('contact_msg').value
+            };
+
+            if (!GOOGLE_SCRIPT_URL) {
+                setTimeout(() => {
+                    alert("ส่งข้อมูลจำลองสำเร็จ! (กรุณาตั้งค่า Google Apps Script URL เพื่อใช้งานจริง)");
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    e.target.reset();
+                }, 1000);
+                return;
+            }
+
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                alert("ส่งข้อมูลเรียบร้อยแล้ว! ผมจะรีบติดต่อกลับโดยเร็วที่สุดครับ");
+                e.target.reset();
+            } catch (err) {
+                alert("เกิดข้อผิดพลาดในการเชื่อมต่อระบบฐานข้อมูล");
+            }
+            
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        };
+
+        async function loadDataFromSheet() {
+            if (!GOOGLE_SCRIPT_URL) return;
+        }
+
+        window.onload = loadDataFromSheet;
+    </script>
+</body>
+</html>
