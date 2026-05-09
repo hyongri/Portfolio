@@ -8,33 +8,77 @@
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Sarabun', sans-serif;
-            background-color: #f8fafc;
-        }
-        .nav-link.active {
-            border-bottom: 2px solid #1e3a8a;
-            color: #1e3a8a;
-        }
-        .section-content {
-            display: none;
-        }
-        .section-content.active {
-            display: block;
-        }
-        .navy-blue { background-color: #1e3a8a; }
-        .navy-text { color: #1e3a8a; }
-        .animate-fade-in {
-            animation: fadeIn 0.5s ease-in;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+        
+    /* 1. เปลี่ยนฟอนต์เป็นแนว Code (JetBrains Mono) และฟอนต์ภาษาไทยที่อ่านง่าย */
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+Thai:wght@300;400;700&display=swap');
+
+    body {
+        /* ใช้ฟอนต์แบบ Monospace สำหรับภาษาอังกฤษ และ Noto Sans สำหรับภาษาไทย */
+        font-family: 'JetBrains Mono', 'Noto Sans Thai', monospace;
+        /* เปลี่ยนสีพื้นหลังเป็นโทน Dark แบบ VS Code (#1e1e1e) */
+        background-color: #0d1117; 
+        color: #c9d1d9; /* สีตัวอักษรขาวนวลสบายตา */
+        margin: 0;
+    }
+
+    /* 2. ปรับสีเมนู (Nav Link) ให้ดูเป็นสี Cyan/Blue แบบ Tech */
+    .nav-link.active {
+        border-bottom: 2px solid #58a6ff;
+        color: #58a6ff !important;
+    }
+
+    /* 3. ปรับสีของกล่องเนื้อหา (Navy Blue เดิม) ให้เป็นสีเทาเข้มแบบโปรแกรมเมอร์ */
+    .navy-blue { 
+        background-color: #161b22 !important; 
+        border: 1px solid #30363d;
+    }
+
+    .navy-text { 
+        color: #7ee787 !important; /* เปลี่ยนข้อความเน้นเป็นสีเขียวแบบ Terminal */
+    }
+
+    /* 4. เพิ่มเครื่องหมาย > หน้าหัวข้อ ให้ฟีลเหมือน Command Line */
+    h2::before {
+        content: "> ";
+        color: #58a6ff;
+    }
+
+    /* ส่วนอื่นๆ คงเดิมตามโครงสร้างของคุณ */
+    .section-content { display: none; }
+    .section-content.active { display: block; }
+    .animate-fade-in { animation: fadeIn 0.5s ease-in; }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    /* --- ส่วนที่เพิ่มเข้ามาใหม่ --- */
+/* นำเข้าฟอนต์แนวโปรแกรมเมอร์ */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+body {
+    background-color: #ffffff !important; /* บังคับพื้นหลังขาว */
+    position: relative;
+}
+
+/* ตั้งค่าให้ Canvas โค้ดวิ่งอยู่ข้างหลัง */
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    opacity: 0.18; /* ปรับลดจาก 0.25 เหลือ 0.18 */
+    pointer-events: none;
+}
+
+/* ปรับฟอนต์หัวข้อให้ดูเป็นแนว Code */
+.code-font { font-family: 'JetBrains Mono', monospace; }
+h1, h2 { font-family: 'JetBrains Mono', 'Sarabun', monospace; }
+</style>
 </head>
 <body>
-
+<canvas id="matrix-canvas"></canvas>
     <!-- Navigation Bar -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4">
@@ -479,6 +523,46 @@
         }
 
         window.onload = loadDataFromSheet;
+        // --- ส่วนสคริปต์ทำให้โค้ดวิ่ง (Matrix Rain) ---
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789010101";
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+const drops = Array(Math.floor(columns)).fill(1);
+
+function drawMatrix() {
+    // ปรับให้การลบเงาเร็วขึ้นนิดนึงเพื่อให้ดูสะอาดตา
+    ctx.fillStyle = "rgba(255, 255, 255, 0.25)"; 
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // เปลี่ยนสีเป็น #94a3b8 (Slate 400) ซึ่งจะดูแพงและไม่เข้มเกินไป
+    ctx.fillStyle = "#94a3b8"; 
+    ctx.font = "16px 'JetBrains Mono'"; // ปรับขนาดกลับมาที่ 16px และเอา bold ออก
+
+    for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+        drops[i]++;
+    }
+}
+
+// ตั้งค่าความเร็ว (50ms)
+setInterval(drawMatrix, 50);
+
+// ปรับขนาดตามหน้าจอ
+window.onresize = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+};
     </script>
 </body>
 </html>
